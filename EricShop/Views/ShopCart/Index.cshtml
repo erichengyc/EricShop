@@ -1,0 +1,39 @@
+﻿@model ShopCartViewModel
+
+<h2>Shop Cart: All your aesop you love</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Selected Amount</th>
+            <th>Aesop</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ShopCart.ShopCartItems)
+        {
+            <tr>
+                <td class="text-left"><a asp-controller="ShopCart" asp-action="RemoveFromShopCart" asp-route-aesopId="@item.Aesop.AesopId" alt="">Decrease Amount</a></td>
+                <td class="text-center">@item.Amount</td>
+                <td class="text-left">@item.Aesop.Name</td>
+                <td class="text-right">@item.Aesop.Price.ToString("c")</td>
+                <td class="text-right">
+                    @((item.Amount * item.Aesop.Price).ToString("c"))
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4" class="text-right">Total</td>
+            <td class="text-right">@Model.ShopCartTotal.ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" asp-controller="ShopCart" asp-action="ClearCart">Clear Cart</a>
+    <a class="btn btn-primary" asp-controller="Order" asp-action="Checkout">Checkout</a>
+</div>

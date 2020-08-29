@@ -15,6 +15,8 @@ namespace EricShop.Models
 
         public DbSet<Aesop> Aesops { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ShopCartItem> ShopCartItems { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

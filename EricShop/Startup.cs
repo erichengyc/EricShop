@@ -33,6 +33,11 @@ namespace EricShop
             services.AddControllersWithViews();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IAesopRepository, AesopRepository>();
+            services.AddScoped<ShopCart>(sc => ShopCart.GetCart(sc));
+            
+
+            services.AddHttpContextAccessor();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +49,8 @@ namespace EricShop
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
