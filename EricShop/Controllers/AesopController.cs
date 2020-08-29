@@ -1,4 +1,5 @@
 ﻿using EricShop.Models;
+using EricShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,13 @@ namespace EricShop.Controllers
 
         public ViewResult List()
         {
-            return View(_aesopRepository.GetAllAesop);
+            //ViewBag.CurrentCategory = "Bestsellers";
+            //return View(_aesopRepository.GetAllAesop);
+
+            var aesopListViewModel = new AesopListViewModel();
+            aesopListViewModel.Aesops = _aesopRepository.GetAllAesop;
+            aesopListViewModel.CurrentCategory = "BestSellers";
+            return View(aesopListViewModel);
         }
 
         }
