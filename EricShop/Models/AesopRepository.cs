@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,24 +10,27 @@ namespace EricShop.Models
 {
     public class AesopRepository : IAesopRepository
     {
-        private readonly ICategoryRepository _categoryRepository = new CategoryRepository();
-        public IEnumerable<Aesop> GetAllAesop => new List<Aesop>
+        private readonly AppDbContext _appDbContext;
+        public AesopRepository(AppDbContext appDbContext)
         {
-            new Aesop {AesopId = 1, Name="Purifying Facial Cream Cleanser", Price = 37.00M, Description="A mild preparation enhanced " +
-                "with White Clay and fatty-acid rich botanicals to gently cleanse and effortlessly remove surface impurities.",
-                Category = _categoryRepository.GetAllCategories.ToList()[0], ImageUrl="https://myer-media.com.au/wcsstore/MyerCatalogAssetStore/images/15/150/1419/110/8/607280500_877696220/607280500_877696220_1_1_720x928.jpg",
-                IsInStock=true,IsOnSale=false,ImageThumbnailUrl="https://myer-media.com.au/wcsstore/MyerCatalogAssetStore/images/15/150/1419/110/8/607280500_877696220/607280500_877696220_1_1_720x928.jpg"},
+            _appDbContext = appDbContext;
+        }
 
-            new Aesop {AesopId = 2, Name="In Two Minds Facial Hydrator", Price = 60.00M, Description="A rapidly absorbed formulation that delivers lightweight hydration with a matte finish, ideal for combination skin.",
-                Category = _categoryRepository.GetAllCategories.ToList()[1], ImageUrl="https://myer-media.com.au/wcsstore/MyerCatalogAssetStore/images/15/150/1419/110/8/635995630/635995630_1_1_720x928.jpg",
-                IsInStock=true,IsOnSale=false,ImageThumbnailUrl="https://myer-media.com.au/wcsstore/MyerCatalogAssetStore/images/15/150/1419/110/8/635995630/635995630_1_1_720x928.jpg"},
+        public IEnumerable<Aesop> GetAllAesop
+        {
+            get
+            {
+                return _appDbContext.Aesops.Include(c => c.Category);
+            }
+        }
 
-            new Aesop {AesopId = 3, Name="Moroccan Neroli Post-Shave Lotion", Price = 55.00M, Description="A unisex hydrator boosted with botanical oils that lightly hydrate and balance skin while pacifying post-shave irritation and aggravation.",
-                Category = _categoryRepository.GetAllCategories.ToList()[2], ImageUrl="https://myer-media.com.au/wcsstore/MyerCatalogAssetStore/images/15/150/1419/110/8/899948450_900001910/899948450_900001910_1_720x928.jpg",
-                IsInStock=true,IsOnSale=false,ImageThumbnailUrl="https://myer-media.com.au/wcsstore/MyerCatalogAssetStore/images/15/150/1419/110/8/899948450_900001910/899948450_900001910_1_720x928.jpg"}
-        };
-
-        public IEnumerable<Aesop> GetAesopOnSale => throw new NotImplementedException();
+        public IEnumerable<Aesop> GetAesopOnSale
+        {
+            get
+            {
+                return _appDbContext.Aesops.Include(c => c.Category).Where(p => p.IsOnSale);
+            }
+        }
 
         public Aesop GetAesopById(int aesopId)
         {
