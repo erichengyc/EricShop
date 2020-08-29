@@ -1,17 +1,8 @@
-﻿@model AesopListViewModel
+﻿
+@model AesopListViewModel
 
-
-    <h1>@Model.CurrentCategory</h1>
-    @foreach (var aesop in Model.Aesops)
-    {
-        <div class="col-sm-4 col-lg-4 col-md-4">
-            <div class="thumbnail">
-                <img src="@aesop.ImageThumbnailUrl" alt="image aesop eric shop" />
-                <div class="caption">
-                    <h3 class="pull-right">@aesop.Price.ToString("c")</h3>
-                    <h3><a asp-controller="Aesop" asp-action="Details" asp-route-id="@aesop.AesopId">@aesop.Name</a></h3>
-                    <p>@aesop.Description</p>
-                </div>
-            </div>
-        </div>
-    }
+<h1>@Model.CurrentCategory</h1>
+@foreach (var aesop in Model.Aesops)
+{
+    <partial name="_aesopCard" model="aesop" />
+}
