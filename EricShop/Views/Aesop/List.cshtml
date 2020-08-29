@@ -4,9 +4,14 @@
     <h1>@Model.CurrentCategory</h1>
     @foreach (var aesop in Model.Aesops)
     {
-    <div>
-        <h2>@aesop.Name</h2>
-        <h3>@aesop.Price.ToString("c")</h3>
-        <h4>@aesop.Category.CategoryName</h4>
-    </div>
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="@aesop.ImageThumbnailUrl" alt="image aesop eric shop" />
+                <div class="caption">
+                    <h3 class="pull-right">@aesop.Price.ToString("c")</h3>
+                    <h3>@aesop.Name</h3>
+                    <p>@aesop.Category.CategoryName</p>
+                </div>
+            </div>
+        </div>
     }
