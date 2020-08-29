@@ -22,7 +22,7 @@ namespace EricShop.Models
                 IsInStock=true,IsOnSale=false,ImageThumbnailUrl="https://myer-media.com.au/wcsstore/MyerCatalogAssetStore/images/15/150/1419/110/8/635995630/635995630_1_1_720x928.jpg"},
 
             new Aesop {AesopId = 3, Name="Moroccan Neroli Post-Shave Lotion", Price = 55.00M, Description="A unisex hydrator boosted with botanical oils that lightly hydrate and balance skin while pacifying post-shave irritation and aggravation.",
-                Category = _categoryRepository.GetAllCategories.ToList()[1], ImageUrl="https://myer-media.com.au/wcsstore/MyerCatalogAssetStore/images/15/150/1419/110/8/899948450_900001910/899948450_900001910_1_720x928.jpg",
+                Category = _categoryRepository.GetAllCategories.ToList()[2], ImageUrl="https://myer-media.com.au/wcsstore/MyerCatalogAssetStore/images/15/150/1419/110/8/899948450_900001910/899948450_900001910_1_720x928.jpg",
                 IsInStock=true,IsOnSale=false,ImageThumbnailUrl="https://myer-media.com.au/wcsstore/MyerCatalogAssetStore/images/15/150/1419/110/8/899948450_900001910/899948450_900001910_1_720x928.jpg"}
         };
 
