@@ -29,6 +29,13 @@ namespace EricShop.Controllers
             aesopListViewModel.CurrentCategory = "BestSellers";
             return View(aesopListViewModel);
         }
+        public IActionResult Details(int id)
+        {
+            var aesop = _aesopRepository.GetAesopById(id);
+            if (aesop == null)
+                return NotFound();
 
+            return View(aesop);
         }
+    }
 }
