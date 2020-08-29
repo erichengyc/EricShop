@@ -7,7 +7,7 @@ namespace EricShop.Models
 {
     public class Aesop
     {
-        public int CandyId { get; set; }
+        public int AesopId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
