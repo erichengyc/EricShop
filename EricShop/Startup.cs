@@ -34,7 +34,8 @@ namespace EricShop
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IAesopRepository, AesopRepository>();
             services.AddScoped<ShopCart>(sc => ShopCart.GetCart(sc));
-            
+            services.AddScoped<IOrderRepository, OrderRepository>();
+
 
             services.AddHttpContextAccessor();
             services.AddSession();
