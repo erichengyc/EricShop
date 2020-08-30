@@ -19,16 +19,30 @@ namespace EricShop.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public ViewResult List()
+        public ViewResult List(string category)
         {
-            //ViewBag.CurrentCategory = "Bestsellers";
-            //return View(_aesopRepository.GetAllAesop);
+            IEnumerable<Aesop> aesops;
+            string currentCategory;
 
-            var aesopListViewModel = new AesopListViewModel();
-            aesopListViewModel.Aesops = _aesopRepository.GetAllAesop;
-            aesopListViewModel.CurrentCategory = "BestSellers";
-            return View(aesopListViewModel);
+            if (string.IsNullOrEmpty(category))
+            {
+                aesops = _aesopRepository.GetAllAesop.OrderBy(c => c.AesopId);
+                currentCategory = "All Aesop";
+            }
+            else
+            {
+                aesops = _aesopRepository.GetAllAesop.Where(c => c.Category.CategoryName == category);
+
+                currentCategory = _categoryRepository.GetAllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+            }
+
+            return View(new AesopListViewModel
+            {
+                Aesops = aesops,
+                CurrentCategory = currentCategory
+            });
         }
+
         public IActionResult Details(int id)
         {
             var aesop = _aesopRepository.GetAesopById(id);
