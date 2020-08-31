@@ -3,8 +3,8 @@
 @if (Model.ShopCart.ShopCartItems.Count > 0)
 {
     <li>
-        <a asp-controller="ShopCart" asp-action="Index">
-            <span class="glyphicon glyphicon-shop-cart"></span>
+        <a href="/ShopCart/Index">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
             <span id="cart-status">
                 @Model.ShopCart.ShopCartItems.Count
             </span>

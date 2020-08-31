@@ -55,5 +55,10 @@ namespace EricShop.Controllers
 
             return RedirectToAction("Index");
         }
+        public RedirectToActionResult ClearCart()
+        {
+            _shopCart.ClearCart();
+            return RedirectToAction("Index");
+        }
     }
 }

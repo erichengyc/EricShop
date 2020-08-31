@@ -47,7 +47,7 @@ namespace EricShop.Controllers
 
         public IActionResult CheckoutComplete()
         {
-            ViewBag.CheckoutCompleteMessage = "Thank you for your order. Enjoy your candy";
+            ViewBag.CheckoutCompleteMessage = "Thank you for your order. Enjoy your Aesop";
             return View();
         }
     }

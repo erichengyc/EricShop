@@ -34,6 +34,47 @@
             </div>
         </nav>
 
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <a class="navbar-brand" href="/Home/Index">Aesop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Contact/Index">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Category Menu
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/Aesop/List?category=Body">Body</a>
+                            <a class="dropdown-item" href="/Aesop/List?category=Cleanse">Clease</a>
+                            <a class="dropdown-item" href="/Aesop/List?category=Hydrate">Hydrate</a>
+                            <a class="dropdown-item" href="/Aesop/List?category=Treat">Treat</a>
+                            <a class="dropdown-item" href="/Aesop/List?category=Sun Care">Sun Care</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/Aesop/List">View All Aesop</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!" class="nav-link navbar-link-2 waves-effect">
+                            <span class="badge badge-pill red">Shopping Cart @await Component.InvokeAsync("ShopCartSummary")</span>
+                            <i class="fas fa-shopping-cart pl-0"></i>
+                        </a>
+                    </li>
+                    <partial name="_LoginPartial" />
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+
         <div class="row">
             <div class="col-md-3">
                 <p class="lead">
