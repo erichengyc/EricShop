@@ -26,54 +26,52 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @if (SignInManager.IsSignedIn(User))
                 {
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Contact/Index">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Contact/About">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Aesops1">Sell</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Category Menu
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/Aesop/List?category=Body">Body</a>
-                            <a class="dropdown-item" href="/Aesop/List?category=Cleanse">Clease</a>
-                            <a class="dropdown-item" href="/Aesop/List?category=Hydrate">Hydrate</a>
-                            <a class="dropdown-item" href="/Aesop/List?category=Treat">Treat</a>
-                            <a class="dropdown-item" href="/Aesop/List?category=Sun Care">Sun Care</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/Aesop/List">View All Aesop</a>
-                        </div>
-                    </li>
-                    https://localhost:44333/Contact/Index
-                    <li class="nav-item">
-                        <a href="#!" class="nav-link navbar-link-2 waves-effect">
-                            <span class="badge badge-pill red">Shopping Cart @await Component.InvokeAsync("ShopCartSummary")</span>
-                            <i class="fas fa-shopping-cart pl-0"></i>
-                        </a>
-                    </li>
-
-
-                </ul>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Contact/Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Contact/About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Aesops1">Selling</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Buying Category Menu
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/Aesop/List?category=Body">Body</a>
+                                <a class="dropdown-item" href="/Aesop/List?category=Cleanse">Clease</a>
+                                <a class="dropdown-item" href="/Aesop/List?category=Hydrate">Hydrate</a>
+                                <a class="dropdown-item" href="/Aesop/List?category=Treat">Treat</a>
+                                <a class="dropdown-item" href="/Aesop/List?category=Sun Care">Sun Care</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Aesop/List">View All Aesops</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#!" class="nav-link navbar-link-2 waves-effect">
+                                <span class="badge badge-pill red">Shopping Cart @await Component.InvokeAsync("ShopCartSummary")</span>
+                                <i class="fas fa-shopping-cart pl-0"></i>
+                            </a>
+                        </li>
+                    </ul>
                     <partial name="_LoginPartial" />
                 }
                 else
                 {
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/Contact/Index">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Contact/About">About</a>
-                </li>
-            </ul>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Contact/Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Contact/About">About</a>
+                        </li>
+                    </ul>
                     <partial name="_LoginPartial" />
                 }
+
             </div>
         </nav>
 

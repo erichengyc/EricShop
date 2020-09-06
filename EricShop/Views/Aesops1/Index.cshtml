@@ -5,36 +5,36 @@
 @inject UserManager<IdentityUser> UserManager
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Aesops Lists";
 }
 
-<h1>Aesops Details</h1>
+<h1>@ViewData["Title"]</h1>
+<h3>@ViewData["Message"]</h3>
 
 <p>
-    <a asp-action="Create">Create New Aesop for @UserManager.GetUserName(User)</a>
+    <a type="button" class="btn btn-outline-success my-2 my-sm-0 text-light" value="Create" asp-action="Create">Create New Aesop for @UserManager.GetUserName(User)</a>
 </p>
-<table class="table">
+
+<form class="form-inline my-2 my-lg-0" asp-controller="Aesops1" asp-action="Index" method="get">
+    <p>
+        Name: <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="SearchString">
+        <input type="submit" class="btn btn-outline-success my-2 my-sm-0 text-light" value="Search" />
+    </p>
+</form>
+
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>
+            <th scope="row">
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageThumbnailUrl)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.IsOnSale)
             </th>
-            <th>
+            <th scope="row">
                 @Html.DisplayNameFor(model => model.IsInStock)
             </th>
             <th>
@@ -46,37 +46,32 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageThumbnailUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsOnSale)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsInStock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.AesopId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AesopId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AesopId">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsOnSale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsInStock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryId)
+                </td>
+                <td align="center">
+                    <a type="button" class="btn btn-outline-success my-2 my-sm-0 text-light" value="Edit" asp-action="Edit" asp-route-id="@item.AesopId">Edit</a>
+                </td>
+                <td align="center">
+                    <a type="button" class="btn btn-outline-warning my-2 my-sm-0 text-light" value="Details" asp-action="Details" asp-route-id="@item.AesopId">Details</a>
+                </td>
+                <td align="center">
+                    <a type="button" class="btn btn-outline-danger my-2 my-sm-0 text-light" value="Delete" asp-action="Delete" asp-route-id="@item.AesopId">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

@@ -25,7 +25,7 @@ namespace EricShop.Controllers
         private const string AllItems = "";
 
         // GET: Aesops1
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             //// GET UserName from logged-in user and display items that user on sell page
             //var username = _userManager.GetUserName(User);
@@ -46,9 +46,18 @@ namespace EricShop.Controllers
             //    user = user.Where(u => u.UserName.Contains(username));
             //    return View(await user.ToListAsync());
             //}
+            var aesops = from m in _context.Aesops
+                         select m;
 
-            var appDbContext = _context.Aesops.Include(a => a.Category);
-            return View(await appDbContext.ToListAsync());
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                aesops = aesops.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await aesops.ToListAsync());
+
+            //var appDbContext = _context.Aesops.Include(a => a.Category);
+            //return View(await appDbContext.ToListAsync());
         }
 
         // GET: Aesops1/Details/5
