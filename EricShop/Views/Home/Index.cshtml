@@ -1,14 +1,29 @@
 ﻿@model HomeViewModel
 
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
 <partial name="_Carousel" />
 
-<h2>Aesop On Sale</h2>
 
-<div class="row">
 
-    @foreach (var aesop in Model.AesopOnSale)
-    {
-        <partial name="_aesopCard" model="aesop" />
-    }
+@if (SignInManager.IsSignedIn(User))
+{
+    <h2>Aesop On Sale</h2>
+    <div class="row">
 
-</div>
+        @foreach (var aesop in Model.AesopOnSale)
+        {
+            <partial name="_aesopCard" model="aesop" />
+        }
+
+    </div>
+}
+else
+{ 
+}

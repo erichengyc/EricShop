@@ -1,5 +1,6 @@
 ﻿using EricShop.Models;
 using EricShop.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,11 +14,13 @@ namespace EricShop.Controllers
     {
         private readonly IAesopRepository _aesopRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public AesopController(IAesopRepository aesopRepository, ICategoryRepository categoryRepository)
+        public AesopController(IAesopRepository aesopRepository, ICategoryRepository categoryRepository, UserManager<IdentityUser> userManager)
         {
             _aesopRepository = aesopRepository;
             _categoryRepository = categoryRepository;
+            _userManager = userManager;
         }
 
         public ViewResult List(string category)

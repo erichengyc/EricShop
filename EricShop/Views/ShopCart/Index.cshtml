@@ -1,6 +1,14 @@
 ﻿@model ShopCartViewModel
 
-<h2>Shop Cart: All your aesop you love</h2>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<h2>Shopping Cart for @UserManager.GetUserName(User): All your aesop you love</h2>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
