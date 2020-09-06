@@ -15,6 +15,7 @@ namespace EricShop.Models
         {
         }
 
+        public static object Aesop { get; internal set; }
         public DbSet<Aesop> Aesops { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ShopCartItem> ShopCartItems { get; set; }

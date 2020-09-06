@@ -2,12 +2,13 @@
 
 <h1>@Model.Name</h1>
 
-<div class="thumbnail">
-    <img alt="@Model.Name" src="@Model.ImageUrl" />
-    <div class="caption-full">
+<div class="card" style="width: 200px" >
+    <img class="card-img-top" src="@Model.ImageUrl" alt="@Model.Name" />
+    <div class="card-body">
         <h3 class="pull-right">@Model.Price</h3>
-        <h3><a href="#">@Model.Name</a></h3>
-        <p>@Model.Description</p>
+        <h4 class="card-title">@Model.Name</h4>
+        <p class="card-text">@Model.Description</p>
+        <a href="#" class="btn btn-primary">See Detail</a>
     </div>
     <div class="addToCart">
         <p class="button">

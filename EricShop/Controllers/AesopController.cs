@@ -1,6 +1,7 @@
 ﻿using EricShop.Models;
 using EricShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,5 +52,6 @@ namespace EricShop.Controllers
 
             return View(aesop);
         }
+
     }
 }

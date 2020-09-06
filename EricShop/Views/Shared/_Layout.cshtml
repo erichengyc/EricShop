@@ -8,31 +8,10 @@
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.js"></script>
     <link href="~/content/site.css" rel="stylesheet" />
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title Aesop App</title>
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        @await Component.InvokeAsync("CategoryMenu")
-                        <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
-                        @await Component.InvokeAsync("ShopCartSummary")
-                        <partial name="_LoginPartial" />
-                    </ul>
-                </div>
-            </div>
-        </nav>
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
             <a class="navbar-brand" href="/Home/Index">Aesop</a>
@@ -83,6 +62,10 @@
             </div>
             <div class="col-lg-12">
                 @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; 2020 - Eric Shop </p>
+                </footer>
             </div>
         </div>
         @RenderSection("Scripts", required: false)

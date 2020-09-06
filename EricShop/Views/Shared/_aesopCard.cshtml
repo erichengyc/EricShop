@@ -2,12 +2,12 @@
 
     <div class="col-sm-4 col-lg-4 col-md-4">
         
-        <div class="thumbnail">
-            <img src="@Model.ImageThumbnailUrl" alt="image for aesop shop" />
-            <div class="caption">
+        <div class="card" style="width: 380px; height:800px">
+            <img class="card-img-top" src="@Model.ImageThumbnailUrl" alt="image for aesop shop" />
+            <div class="card-body">
                 <h3 class="pull-right">@Model.Price.ToString("c")</h3>
-                <h3><a asp-controller="Aesop" asp-action="Details" asp-route-id="@Model.AesopId">@Model.Name</a></h3>
-                <p>@Model.Description</p>
+                <h3><a class="card-title" asp-controller="Aesop" asp-action="Details" asp-route-id="@Model.AesopId">@Model.Name</a></h3>
+                <p class="card-text">@Model.Description</p>
             </div>
             <div class="addToCart">
                 <p class="button">
