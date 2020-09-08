@@ -51,5 +51,7 @@ namespace EricShop.Models
 
         [BindNever]
         public DateTime OrderPlaced { get; set; }
+
+        public string Username { get; set; }
     }
 }

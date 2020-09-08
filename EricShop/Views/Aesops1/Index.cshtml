@@ -31,7 +31,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.IsOnSale)
             </th>
             <th scope="row">
@@ -39,6 +39,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Category)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
             </th>
             <th></th>
         </tr>
@@ -46,32 +49,35 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsOnSale)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsInStock)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryId)
-                </td>
-                <td align="center">
-                    <a type="button" class="btn btn-outline-success my-2 my-sm-0 text-light" value="Edit" asp-action="Edit" asp-route-id="@item.AesopId">Edit</a>
-                </td>
-                <td align="center">
-                    <a type="button" class="btn btn-outline-warning my-2 my-sm-0 text-light" value="Details" asp-action="Details" asp-route-id="@item.AesopId">Details</a>
-                </td>
-                <td align="center">
-                    <a type="button" class="btn btn-outline-danger my-2 my-sm-0 text-light" value="Delete" asp-action="Delete" asp-route-id="@item.AesopId">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.IsOnSale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td align="center">
+                <a type="button" class="btn btn-outline-success my-2 my-sm-0 text-light" value="Edit" asp-action="Edit" asp-route-id="@item.AesopId">Edit</a>
+            </td>
+            <td align="center">
+                <a type="button" class="btn btn-outline-warning my-2 my-sm-0 text-light" value="Details" asp-action="Details" asp-route-id="@item.AesopId">Details</a>
+            </td>
+            <td align="center">
+                <a type="button" class="btn btn-outline-danger my-2 my-sm-0 text-light" value="Delete" asp-action="Delete" asp-route-id="@item.AesopId">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -27,37 +27,40 @@ namespace EricShop.Controllers
         // GET: Aesops1
         public async Task<IActionResult> Index(string searchString)
         {
-            //// GET UserName from logged-in user and display items that user on sell page
-            //var username = _userManager.GetUserName(User);
+            // GET UserName from logged-in user and display items that user on sell page
+            var username = _userManager.GetUserName(User);
 
-            //// if username is admin@admin.com (admin user) then show ALL ITEMS from Product Table
-            //if (username == Admin)
-            //{
-            //    var user = from u in _context.Aesops
-            //               select u;
-            //    user = user.Where(u => u.UserName.Contains(AllItems));
-            //    return View(await user.ToListAsync());
-            //}
-            //// else show items from Product Table for current user
-            //else
-            //{
-            //    var user = from u in _context.Aesops
-            //               select u;
-            //    user = user.Where(u => u.UserName.Contains(username));
-            //    return View(await user.ToListAsync());
-            //}
-            var aesops = from m in _context.Aesops
-                         select m;
-
-            if (!String.IsNullOrEmpty(searchString))
+            // if username is admin@admin.com (admin user) then show ALL ITEMS from Aesop Table
+            if (username == Admin)
             {
-                aesops = aesops.Where(s => s.Name.Contains(searchString));
+                var user = from u in _context.Aesops
+                           select u;
+                user = user.Where(u => u.Username.Contains(AllItems));
+                
+                var aesops = from m in _context.Aesops
+                             select m;
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    aesops = aesops.Where(s => s.Name.Contains(searchString));
+                }
+
+                return View(await aesops.ToListAsync());
             }
+            // else show items from Aesop Table for current user
+            else
+            {
+                var user = from u in _context.Aesops
+                           select u;
+                user = user.Where(u => u.Username.Contains(username));
 
-            return View(await aesops.ToListAsync());
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    user = user.Where(s => s.Name.Contains(searchString));
+                }
 
-            //var appDbContext = _context.Aesops.Include(a => a.Category);
-            //return View(await appDbContext.ToListAsync());
+                return View(await user.ToListAsync());
+            }
         }
 
         // GET: Aesops1/Details/5
@@ -91,7 +94,7 @@ namespace EricShop.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AesopId,Name,Description,Price,ImageUrl,ImageThumbnailUrl,IsOnSale,IsInStock,CategoryId,UserName")] Aesop aesop)
+        public async Task<IActionResult> Create([Bind("AesopId,Name,Description,Price,ImageUrl,ImageThumbnailUrl,IsOnSale,IsInStock,CategoryId,Username")] Aesop aesop)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +128,7 @@ namespace EricShop.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AesopId,Name,Description,Price,ImageUrl,ImageThumbnailUrl,IsOnSale,IsInStock,CategoryId,UserName")] Aesop aesop)
+        public async Task<IActionResult> Edit(int id, [Bind("AesopId,Name,Description,Price,ImageUrl,ImageThumbnailUrl,IsOnSale,IsInStock,CategoryId,Username")] Aesop aesop)
         {
             if (id != aesop.AesopId)
             {
