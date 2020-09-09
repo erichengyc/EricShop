@@ -1,4 +1,7 @@
 ﻿@model EricShop.Models.Aesop
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Edit";
@@ -15,6 +18,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="AesopId" />
             <div class="form-group">
+                <div class="form-group" hidden>
+                    <label asp-for="Username" class="control-label"></label>
+                    <input asp-for="Username" class="form-control" value="@UserManager.GetUserName(User)" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
